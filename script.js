@@ -78,55 +78,48 @@ function changeMessage() {
 
 /* --- Função: Cria o Fundo Estrelado --- */
 function createStars() {
-    const starCount = 60; // Número de estrelas
+    // Se a tela for menor que 768px (celular), cria só 20 estrelas. Se PC, 60.
+    const isMobile = window.innerWidth < 768;
+    const starCount = isMobile ? 20 : 60; 
     
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
-        
-        // Posição aleatória na tela
         star.style.left = Math.random() * 100 + 'vw';
         star.style.top = Math.random() * 100 + 'vh';
         
-        // Tamanho aleatório (entre 2px e 5px)
         const size = Math.random() * 3 + 2 + 'px';
         star.style.width = size;
         star.style.height = size;
         
-        // Atraso e duração da animação aleatórios para parecer natural
         star.style.animationDuration = (Math.random() * 3 + 2) + 's';
         star.style.animationDelay = Math.random() * 2 + 's';
         
         document.body.appendChild(star);
     }
 }
-
 /* --- Função: Chuva de Confetes --- */
 function throwConfetti() {
     const colors = ['#ff00cc', '#333399', '#ffd700', '#00ffff', '#ffffff'];
-    const particles = 100; // Quantidade de confetes por explosão
+    
+    // Se for celular, joga apenas 30 confetes. Se PC, 100.
+    const isMobile = window.innerWidth < 768;
+    const particles = isMobile ? 30 : 100;
 
     for (let i = 0; i < particles; i++) { 
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-        
-        // Posição horizontal aleatória
         confetti.style.left = Math.random() * 100 + 'vw';
-        
-        // Cor aleatória da nossa lista
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         
-        // Tamanho aleatório
         const size = Math.random() * 8 + 4 + 'px';
         confetti.style.width = size;
         confetti.style.height = size;
 
-        // Velocidade da queda aleatória
         confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
         
         document.body.appendChild(confetti);
         
-        // Remove da memória após cair para não travar o navegador
         setTimeout(() => {
             confetti.remove();
         }, 5000);

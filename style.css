@@ -201,3 +201,29 @@ video {
     50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 10px white; }
     100% { opacity: 0; transform: scale(0.5); }
 }
+
+@media (max-width: 768px) {
+    
+    /* Remove o efeito de vidro pesado */
+    .marquee-container, .message-card {
+        backdrop-filter: none !important;
+        /* Aumenta a opacidade do fundo para compensar a falta do blur */
+        background: rgba(20, 20, 30, 0.85) !important; 
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Reduz a sombra do botão para aliviar a renderização */
+    button {
+        box-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
+    }
+
+    .marquee span {
+        font-size: 1.2rem; 
+        padding-left: 20px;
+    }
+    
+    video {
+        box-shadow: none; /* Remove sombra pesada do vídeo */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
