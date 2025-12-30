@@ -1,6 +1,6 @@
 /* --- Configurações das Mensagens --- */
 const messages = [
-    { text: "Sua criatividade e dedicação transformaram nossa equipe. Sentiremos saudades!", author: "- Equipe de Design" },
+    { text: "May, com você eu aprendi a 'Polianar'. Então nunca se esqueça de ver o lado bom das dificuldades!", author: "- Hellen" },
     { text: "Voa alto, May! O mundo do Marketing é pequeno para o seu talento.", author: "- Gestão" },
     { text: "Obrigada por cada parceria e cada cafézinho. Muito sucesso!", author: "- Amigos do Comercial" },
     { text: "Você não é apenas uma estrela, é uma constelação inteira! Brilha!", author: "- Seus Colegas" },
