@@ -1,0 +1,134 @@
+/* --- Configurações das Mensagens --- */
+// Aqui você pode adicionar quantas frases quiser!
+const messages = [
+    { text: "Sua criatividade e dedicação transformaram nossa equipe. Sentiremos saudades!", author: "- Equipe de Design" },
+    { text: "Voa alto, May! O mundo do Marketing é pequeno para o seu talento.", author: "- Gestão" },
+    { text: "Obrigada por cada parceria e cada cafézinho. Muito sucesso!", author: "- Amigos do Comercial" },
+    { text: "Você não é apenas uma estrela, é uma constelação inteira! Brilha!", author: "- Seus Colegas" },
+    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" }
+];
+
+let currentMessageIndex = 0;
+
+/* --- Função Principal: Inicia Tudo --- */
+function startExperience() {
+    // 1. Oculta a tela de início (Overlay)
+    const overlay = document.getElementById('start-overlay');
+    overlay.style.opacity = '0';
+    
+    // Espera a transição de opacidade terminar para remover da tela
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        
+        // 2. Mostra a aplicação principal
+        const app = document.getElementById('main-app');
+        app.classList.remove('hidden');
+        app.classList.add('visible');
+
+        // 3. Toca o Vídeo
+        const video = document.getElementById('mayVideo');
+        video.play();
+        video.volume = 1.0;
+
+        // 4. Toca a Música (Se houver)
+        const music = document.getElementById('bgMusic');
+        if (music) {
+            music.volume = 0.5; // Volume a 50% para não brigar com o vídeo
+            music.play().catch(e => console.log("Áudio não encontrado ou bloqueado"));
+        }
+
+        // 5. Inicia os Efeitos Visuais
+        createStars(); // Cria o fundo estrelado
+        throwConfetti(); // Primeira chuva de confetes
+        
+        // Repete confetes a cada 15 segundos
+        setInterval(throwConfetti, 15000);
+
+        // 6. Inicia o Carrossel de Mensagens
+        // Roda imediatamente a primeira troca para não esperar 4s
+        changeMessage(); 
+        setInterval(changeMessage, 5000); // Troca a cada 5 segundos
+
+    }, 1000);
+}
+
+/* --- Função: Troca as Mensagens (Carrossel) --- */
+function changeMessage() {
+    const textElement = document.getElementById('message-text');
+    const authorElement = document.getElementById('message-author');
+    
+    // Efeito de "Fade Out" (Sair)
+    textElement.style.opacity = 0;
+    authorElement.style.opacity = 0;
+
+    setTimeout(() => {
+        // Atualiza o texto com base no índice atual
+        const currentMsg = messages[currentMessageIndex];
+        textElement.innerText = `"${currentMsg.text}"`;
+        authorElement.innerText = currentMsg.author;
+        
+        // Avança para a próxima mensagem (volta ao zero se acabar)
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        
+        // Efeito de "Fade In" (Entrar)
+        textElement.style.opacity = 1;
+        authorElement.style.opacity = 1;
+    }, 500); // Meio segundo para trocar o texto enquanto está invisível
+}
+
+/* --- Função: Cria o Fundo Estrelado --- */
+function createStars() {
+    const starCount = 60; // Número de estrelas
+    
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Posição aleatória na tela
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        
+        // Tamanho aleatório (entre 2px e 5px)
+        const size = Math.random() * 3 + 2 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        
+        // Atraso e duração da animação aleatórios para parecer natural
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        
+        document.body.appendChild(star);
+    }
+}
+
+/* --- Função: Chuva de Confetes --- */
+function throwConfetti() {
+    const colors = ['#ff00cc', '#333399', '#ffd700', '#00ffff', '#ffffff'];
+    const particles = 100; // Quantidade de confetes por explosão
+
+    for (let i = 0; i < particles; i++) { 
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        
+        // Posição horizontal aleatória
+        confetti.style.left = Math.random() * 100 + 'vw';
+        
+        // Cor aleatória da nossa lista
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Tamanho aleatório
+        const size = Math.random() * 8 + 4 + 'px';
+        confetti.style.width = size;
+        confetti.style.height = size;
+
+        // Velocidade da queda aleatória
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        
+        document.body.appendChild(confetti);
+        
+        // Remove da memória após cair para não travar o navegador
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+    }
+}

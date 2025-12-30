@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para a May | Marketing Star</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="start-overlay">
+        <h1>Preparada, May?</h1>
+        <p>Um novo ciclo começa agora.</p>
+        <button onclick="startExperience()">Iniciar Homenagem ✨</button>
+    </div>
+
+    <div id="main-app" class="hidden">
+        
+        <div class="marquee-container">
+            <div class="marquee">
+                <span>Até breve, May... Você merece muito isso! Continue brilhando como sempre! &nbsp;&nbsp; • &nbsp;&nbsp; Sucesso no Marketing! &nbsp;&nbsp; • &nbsp;&nbsp; </span>
+                <span>Até breve, May... Você merece muito isso! Continue brilhando como sempre! &nbsp;&nbsp; • &nbsp;&nbsp; Sucesso no Marketing! &nbsp;&nbsp; • &nbsp;&nbsp; </span>
+            </div>
+        </div>
+
+        <div class="video-frame">
+            <video id="mayVideo" loop playsinline>
+                <source src="/video/despedida May.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        </div>
+
+        <div class="message-section">
+            <div class="message-card">
+                <p id="message-text">"Carregando homenagens..."</p>
+                <span id="message-author"></span>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* --- Configurações Globais --- */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a0b2e 0%, #000000 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh; /* Ocupa a altura total da tela */
+    overflow: hidden; /* Impede barras de rolagem */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- Tela de Início (Overlay) --- */
+#start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Fica acima de tudo */
+    transition: opacity 1s ease;
+}
+
+#start-overlay h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ff00cc, #333399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+/* Botão Estilizado */
+button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff00cc, #9900cc);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 0, 204, 0.8);
+}
+
+/* --- Layout Principal --- */
+#main-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: 10; /* Fica acima das estrelas do fundo */
+    position: relative;
+}
+
+#main-app.visible {
+    opacity: 1;
+}
+
+/* --- Letreiro (Marquee) --- */
+.marquee-container {
+    height: 10vh; /* Altura fixa para o topo */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+}
+
+.marquee span {
+    display: inline-block;
+    font-size: 2rem; /* Levemente reduzido para elegância */
+    font-weight: 700;
+    padding-left: 50px; /* Espaço entre repetições */
+    color: #fff;
+    text-shadow: 0 0 10px #ff00cc, 0 0 20px #3333ff;
+    animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* --- Vídeo --- */
+.video-frame {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    max-height: 60vh; /* Limitado para sobrar espaço para as mensagens */
+}
+
+video {
+    height: 100%;
+    max-width: 90%;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(100, 100, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- NOVA: Área de Mensagens --- */
+.message-section {
+    height: 20vh; /* Altura reservada para as mensagens */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinhado ao topo da seção */
+    padding: 0 20px 20px 20px;
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.05); /* Fundo translúcido */
+    backdrop-filter: blur(10px); /* Efeito vidro */
+    padding: 15px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
+.message-card:hover {
+    border-color: #ff00cc;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#message-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 0 0 10px 0;
+    color: #f0f0f0;
+    min-height: 1.5em; /* Garante altura mínima */
+    transition: opacity 0.5s ease;
+}
+
+#message-author {
+    display: block;
+    font-weight: bold;
+    color: #ff00cc;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: opacity 0.5s ease;
+}
+
+/* --- Confetes (Partículas) --- */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    animation: fall linear forwards;
+    z-index: 50;
+    top: -20px;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* --- NOVA: Estrelas de Fundo --- */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle ease-in-out infinite;
+    z-index: 1; /* Fica atrás de tudo */
+}
+
+@keyframes twinkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 10px white; }
+    100% { opacity: 0; transform: scale(0.5); }
+}
