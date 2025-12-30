@@ -1,7 +1,7 @@
 /* --- Configurações das Mensagens --- */
 // Aqui você pode adicionar quantas frases quiser!
 const messages = [
-    { text: "Sua criatividade e dedicação transformaram nossa equipe. Sentiremos saudades!", author: "- Equipe de Design" },
+    { text: "Sua criatividade e dedicação transformaram nossa equipe. Sentirei saudades! Brilha May!", author: "- Fabio (Quem é Fá?)" },
     { text: "Voa alto, May! O mundo do Marketing é pequeno para o seu talento.", author: "- Gestão" },
     { text: "Obrigada por cada parceria e cada cafézinho. Muito sucesso!", author: "- Amigos do Comercial" },
     { text: "Você não é apenas uma estrela, é uma constelação inteira! Brilha!", author: "- Seus Colegas" },
