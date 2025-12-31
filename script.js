@@ -3,7 +3,7 @@ const messages = [
     { text: "May, com você eu aprendi a 'Polianar'. Então nunca se esqueça de ver o lado bom das dificuldades!", author: "- Hellen" },
     { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’  kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horroress! Com carinho,", author: "- Edna" },
     { text: "May, você vai fazer muiiiitaaa falta no esquadrão. Gratidão por tudo que fez e faz por nós. Tenho certeza que você vai brilhar nesta nova etapa. Estaremos sempre torcendo, e com muito orgulho de você !", author: "- Cassia" },
-    { text: "Você não é apenas uma estrela, é uma constelação inteira! Brilha!", author: "- Seus Colegas" },
+    { text: "May, ter você em nossa equipe foi um presente. Sua amizade, cuidado e alegria vão fazer muita falta no nosso dia a dia. Que essa nova fase seja tão especial quanto você", author: "- Adiana" },
     { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" }
 ];
 
