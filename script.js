@@ -7,7 +7,7 @@ const messages = [
     { text: "May, você vai fazer muiiiitaaa falta no esquadrão. Gratidão por tudo que fez e faz por nós. Tenho certeza que você vai brilhar nesta nova etapa. Estaremos sempre torcendo, e com muito orgulho de você!", author: "- Cassia" },
     { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’ kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horrores! Com carinho,", author: "- Edna" },
     { text: "May, eu não tenho palavras para expressar o quanto estou orgulhosa e feliz por você! Sei que essa conquista foi uma vitória e você lutou muito pra chegar esse momento! Quantos 'não foi dessa vez' você ouviu, mas não desistiu e seguiu em frente. Eu sempre soube que você era capaz! Só tenho a agradecer por todos esses anos juntas. Voa alto e vai com tudo! Só tenho um pedido: nunca se esqueça de mim. Com muito amor e admiração.", author: "- Elis" },
-    { text: "May, lembro a primeira vez que tive contato com você, foi pedindo para votar em melhor vestimenta para o jogo do Brasil, lembra? Kkkkkk. Mas, com o tempo, fui para o eletrônico, e assim, tivemos nosso contato com mais frequência, e desde então passei a adminira-la muito! Eu sei que você vai brilhar nessa sua nova caminhada, e com certeza, alcançar objetivos ainda maiores, pois é uma mulher guerreira e batalhadora! Brilha, May! Um grande agraço", author: "- Fabio (Quem é Fá? )" },
+    { text: "May, lembro a primeira vez que tive contato com você, foi pedindo para votar em melhor vestimenta para o jogo do Brasil, lembra? Kkkkkk. Mas, com o tempo, fui para o eletrônico, e assim, tivemos nosso contato com mais frequência, e desde então passei a adminira-la muito! Eu sei que você vai brilhar nessa sua nova caminhada, e com certeza, alcançar objetivos ainda maiores, pois é uma mulher guerreira e batalhadora! Brilha, May! Um grande abraço", author: "- Fabio (Quem é Fá? )" },
     { text: "May, quero te agradecer por todo o suporte que você me deu quando entrei na equipe. Saiba que você é uma pessoa extraordinária e tenho certeza de que vai brilhar muito nessa nova etapa da sua vida. Obrigada por todas as risadas, conversas doidas que tivemos, carinho, apoio e suporte. Você merece o mundo, vai com tudo, garota! E qualquer coisa já sabe, vai me avisando", author: "- Fran" },
     { text: "May  saiba que sentirei muito sua falta mas quero que saiba também que fiquei muito feliz por você , de coração msmo vc merece !!! Voe alto !!!  .   Você fez e sempre faz um trabalho excelente e sei que você vai  continuar brilhando por onde for!  Admiro muito seu trabalho . Muito sucesso nessa nova jornada. Estarei sempre aqui torcendo por você ", author: "- Gabi" },
     { text: "May, quero te agradecer de coração por tudo. Desde o primeiro momento, você me recebeu tão bem na equipe. Obrigada por cada ensinamento, troca, risadas e conversas. Você é uma mulher incrível, batalhadora, forte e uma amiga especial. Tenho muito orgulho de você! Que você nunca perca o seu jeitinho único de ser 🤍", author: "- Gle" },
@@ -61,11 +61,21 @@ function switchScene() {
 
 function startMessagesAndMusic() {
     const messageSection = document.querySelector('.message-section');
-    const music = document.getElementById('bgMusic');
+    const music1 = document.getElementById('bgMusic');
+    const music2 = document.getElementById('bgMusic2');
     
-    if (music) {
-        music.volume = 0.5;
-        music.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
+    if (music1) {
+        music1.volume = 0.8;
+        music1.play().catch(e => console.log("Áudio 1 bloqueado"));
+
+        // QUANDO A MÚSICA 1 TERMINAR:
+        music1.addEventListener('ended', () => {
+            if (music2) {
+                music2.volume = 0.7;
+                music2.loop = true; // A segunda música pode ficar em loop infinito
+                music2.play().catch(e => console.log("Áudio 2 bloqueado"));
+            }
+        });
     }
 
     if(messageSection) {
