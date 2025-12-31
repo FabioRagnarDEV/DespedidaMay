@@ -11,6 +11,7 @@ const messages = [
     { text: "May você é uma pessoa mais que especial e agradeço a Deus por fazer você minha amiga! Desejo todo o sucesso que a vida possa lhe reservar. Brilhe por onde passar, você merece o melhor!! Te adoro!!", author: "- Andreza" },
     { text: "May, quero te agradecer de coração por tudo. Desde o primeiro momento, você me recebeu tão bem na equipe. Obrigada por cada ensinamento, troca, risadas e conversas. Você é uma mulher incrível, batalhadora, forte e uma amiga especial. Tenho muito orgulho de você! Que você nunca perca o seu jeitinho único de ser 🤍", author: "- Gle" },
     { text: "May, que você seja luz por onde for 🤍 Obrigada pela parceria, valeu a pena te conhecer, muito sucesso nos seus passos. Quando um de nós vence, deixa o coração quentinho, com saudades, mas quentinho. Vai lá mulher e arrasa 🤍", author: "- Nadia" },
+    { text: "May, lembro a primeira vez que tive contato com você, foi pedindo para votar em melhor vestimenta para o jogo do Brasil, lembra? Kkkkkk. Mas, com o tempo, fui para o eletrônico, e assim, tivemos nosso contato com mais frequência, e desde então passei a adminira-la muito! Eu sei que você vai brilhar nessa sua nova caminhada, e com certeza, alcançar objetivos ainda maiores, pois é uma mulher guerreira e batalhadora! Brilha, May! Um grande agraço", author: "- Fabio (Quem é Fá? )" },
 ];
 
 let currentMessageIndex = 0;
