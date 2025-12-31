@@ -12,6 +12,7 @@ const messages = [
     { text: "May, quero te agradecer de coração por tudo. Desde o primeiro momento, você me recebeu tão bem na equipe. Obrigada por cada ensinamento, troca, risadas e conversas. Você é uma mulher incrível, batalhadora, forte e uma amiga especial. Tenho muito orgulho de você! Que você nunca perca o seu jeitinho único de ser 🤍", author: "- Gle" },
     { text: "May, que você seja luz por onde for 🤍 Obrigada pela parceria, valeu a pena te conhecer, muito sucesso nos seus passos. Quando um de nós vence, deixa o coração quentinho, com saudades, mas quentinho. Vai lá mulher e arrasa 🤍", author: "- Nadia" },
 ];
+
 let currentMessageIndex = 0;
 let messageInterval;
 
@@ -26,32 +27,67 @@ function startExperience() {
         app.classList.remove('hidden');
         app.classList.add('visible');
 
-        // Toca o Vídeo
+        // Configura o Vídeo
         const video = document.getElementById('mayVideo');
-        video.play().catch(e => console.log("Interação necessária para tocar o vídeo"));
         video.volume = 1.0;
+        
+        // Tenta tocar o vídeo
+        video.play().catch(e => console.log("Interação necessária para tocar o vídeo"));
 
-        // Toca a Música (Se houver)
-        const music = document.getElementById('bgMusic');
-        if (music) {
-            music.volume = 0.5;
-            music.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
-        }
+        // --- LÓGICA: Quando o vídeo acaba, troca a cena ---
+        video.addEventListener('ended', () => {
+            switchScene(); 
+        });
 
-        // Inicia Efeitos Visuais (Sem confetes, apenas estrelas leves)
+        // Inicia as Estrelas
         createStars(); 
 
-        // Inicia o Carrossel de Mensagens
-        changeMessage(); 
-        messageInterval = setInterval(changeMessage, 5000);
-
     }, 1000);
+}
+
+/* --- Função que TROCA O VÍDEO PELAS MENSAGENS --- */
+function switchScene() {
+    // 1. Esconde o Vídeo
+    const videoFrame = document.querySelector('.video-frame');
+    videoFrame.style.opacity = '0'; // Efeito visual de sumir
+    
+    setTimeout(() => {
+        videoFrame.style.display = 'none'; // Remove da tela
+
+        // 2. Mostra as Mensagens e Toca a Música
+        startMessagesAndMusic();
+    }, 1000); // Espera 1 segundo para o fade out
+}
+
+function startMessagesAndMusic() {
+    const messageSection = document.querySelector('.message-section');
+    
+    // Toca a Música
+    const music = document.getElementById('bgMusic');
+    if (music) {
+        music.volume = 0.5;
+        music.play().catch(e => console.log("Áudio bloqueado"));
+    }
+
+    // Mostra a seção de mensagens
+    if(messageSection) {
+        messageSection.classList.add('visible-flex');
+    }
+    
+    // Inicia o carrossel imediatamente
+    changeMessage();
+    
+    // Configura o intervalo de 12 segundos
+    messageInterval = setInterval(changeMessage, 12000);
 }
 
 function changeMessage() {
     const textElement = document.getElementById('message-text');
     const authorElement = document.getElementById('message-author');
+    const cardElement = document.querySelector('.message-card');
     
+    if (!textElement || !authorElement) return;
+
     textElement.style.opacity = 0;
     authorElement.style.opacity = 0;
 
@@ -60,6 +96,11 @@ function changeMessage() {
         textElement.innerText = `"${currentMsg.text}"`;
         authorElement.innerText = currentMsg.author;
         
+        // Garante que o texto comece do topo (útil no celular)
+        if(cardElement) {
+            cardElement.scrollTop = 0;
+        }
+
         currentMessageIndex = (currentMessageIndex + 1) % messages.length;
         
         textElement.style.opacity = 1;
@@ -67,28 +108,21 @@ function changeMessage() {
     }, 500);
 }
 
-/* --- OTIMIZAÇÃO MAXIMA: Estrelas --- */
+/* --- OTIMIZAÇÃO: Estrelas --- */
 function createStars() {
-    // Se for celular, NÃO cria estrelas animadas, ou cria muito poucas (ex: 10)
-    // Se for PC, cria 40.
     const isMobile = window.innerWidth < 768;
-    
-    // Se quiser performance total no celular, mude para 0.
-    const starCount = isMobile ? 10 : 40; 
+    const starCount = isMobile ? 15 : 50; 
     
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
-        
         star.style.left = Math.random() * 100 + 'vw';
         star.style.top = Math.random() * 100 + 'vh';
         
-        // Estrelas menores para pesar menos
         const size = Math.random() * 2 + 1 + 'px';
         star.style.width = size;
         star.style.height = size;
         
-        // Animação mais lenta para exigir menos da GPU
         star.style.animationDuration = (Math.random() * 5 + 3) + 's';
         
         document.body.appendChild(star);
