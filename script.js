@@ -4,7 +4,10 @@ const messages = [
     { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’  kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horroress! Com carinho,", author: "- Edna" },
     { text: "May, você vai fazer muiiiitaaa falta no esquadrão. Gratidão por tudo que fez e faz por nós. Tenho certeza que você vai brilhar nesta nova etapa. Estaremos sempre torcendo, e com muito orgulho de você !", author: "- Cassia" },
     { text: "May, ter você em nossa equipe foi um presente. Sua amizade, cuidado e alegria vão fazer muita falta no nosso dia a dia. Que essa nova fase seja tão especial quanto você", author: "- Adiana" },
-    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" }
+    { text: "May, sua generosidade nunca será esquecida! Que possa receber de volta todo cuidado, atenção e dedicação que você tem pelo próximo! Obrigado por tudo!", author: "- Rafael" },
+    { text: "May vc me ajudou muito quando cheguei no setor, mas melhor que isso foram as suas palhaçadas que me fazia rir e adoro receber seus vídeos no Instagram. Vou sentir muito sua falta, deste jeito doidinha de ser.", author: "- Aurinha" },
+    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" },
+    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" },
 ];
 
 let currentMessageIndex = 0;
