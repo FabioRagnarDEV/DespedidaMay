@@ -21,9 +21,8 @@ const messages = [
 ];
 
 let currentMessageIndex = 0;
-const MESSAGE_TIME = 12000; // Tempo de cada mensagem (12 segundos)
+const MESSAGE_TIME = 12000; 
 
-/* --- Início da Experiência --- */
 function startExperience() {
     const overlay = document.getElementById('start-overlay');
     overlay.style.opacity = '0';
@@ -37,9 +36,8 @@ function startExperience() {
 
         const video = document.getElementById('mayVideo');
         video.volume = 1.0;
-        video.play().catch(e => console.log("Interação necessária para tocar o vídeo"));
+        video.play().catch(e => console.log("Erro ao tocar vídeo:", e));
 
-        // Evento que detecta o fim do vídeo
         video.addEventListener('ended', () => {
             switchScene(); 
         });
@@ -48,7 +46,6 @@ function startExperience() {
     }, 1000);
 }
 
-/* --- Transição: Sai Vídeo, Entra Homenagem --- */
 function switchScene() {
     const videoFrame = document.querySelector('.video-frame');
     videoFrame.style.opacity = '0';
@@ -68,11 +65,11 @@ function startMessagesAndMusic() {
         music1.volume = 0.8;
         music1.play().catch(e => console.log("Áudio 1 bloqueado"));
 
-        // QUANDO A MÚSICA 1 TERMINAR:
+        // Lógica para tocar a música 2 quando a 1 acabar
         music1.addEventListener('ended', () => {
             if (music2) {
                 music2.volume = 0.7;
-                music2.loop = true; // A segunda música pode ficar em loop infinito
+                music2.loop = true; 
                 music2.play().catch(e => console.log("Áudio 2 bloqueado"));
             }
         });
@@ -85,7 +82,6 @@ function startMessagesAndMusic() {
     runMessageCycle();
 }
 
-/* --- Ciclo de Mensagens com Barra de Progresso --- */
 function runMessageCycle() {
     changeMessage();
     
@@ -102,14 +98,13 @@ function runMessageCycle() {
         if (progress < MESSAGE_TIME) {
             requestAnimationFrame(animateBar);
         } else {
-            runMessageCycle(); // Reinicia para a próxima mensagem
+            runMessageCycle(); 
         }
     }
     
     requestAnimationFrame(animateBar);
 }
 
-/* --- Troca de Texto e Efeito de Explosão --- */
 function changeMessage() {
     const textElement = document.getElementById('message-text');
     const authorElement = document.getElementById('message-author');
@@ -130,34 +125,28 @@ function changeMessage() {
         textElement.style.opacity = 1;
         authorElement.style.opacity = 1;
         
-        // Dispara o efeito visual nos 4 cantos
         triggerFourCorners();
     }, 500);
 }
 
-/* --- Lógica das Explosões nos 4 Cantos --- */
 function triggerFourCorners() {
-    createExplosion(15, 15); // Superior Esquerdo
-    createExplosion(85, 15); // Superior Direito
-    createExplosion(15, 85); // Inferior Esquerdo
-    createExplosion(85, 85); // Inferior Direito
+    createExplosion(15, 15); 
+    createExplosion(85, 15); 
+    createExplosion(15, 85); 
+    createExplosion(85, 85); 
 }
 
 function createExplosion(posX, posY) {
     const colors = ['#ff00cc', '#333399', '#ffd700', '#ffffff', '#00ffff'];
-    const amount = 40; // Partículas por explosão
+    const amount = 40; 
 
     for (let i = 0; i < amount; i++) {
         const sparkle = document.createElement('div');
         sparkle.classList.add('sparkle');
-        
         sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        // Define o ponto inicial da explosão (em vw/vh)
         sparkle.style.left = posX + 'vw';
         sparkle.style.top = posY + 'vh';
         
-        // Vetores de movimento aleatórios
         const angle = Math.random() * Math.PI * 2;
         const velocity = Math.random() * 150 + 50;
         const tx = Math.cos(angle) * velocity + 'px';
@@ -167,13 +156,10 @@ function createExplosion(posX, posY) {
         sparkle.style.setProperty('--ty', ty);
         
         document.body.appendChild(sparkle);
-        
-        // Remove o elemento após 1 segundo para manter a performance
         setTimeout(() => sparkle.remove(), 1000);
     }
 }
 
-/* --- Fundo Estrelado --- */
 function createStars() {
     const isMobile = window.innerWidth < 768;
     const starCount = isMobile ? 15 : 50; 
