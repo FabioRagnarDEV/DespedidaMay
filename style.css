@@ -102,7 +102,7 @@ button:hover {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* --- Vídeo (Protagonista Inicial) --- */
+/* --- Vídeo --- */
 .video-frame {
     height: 85vh; 
     width: 100%;
@@ -124,60 +124,51 @@ video {
     box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 
-/* --- Mensagens (Estilo Flutuante / Sem Caixa) --- */
+/* --- Mensagens (Estilo Flutuante) --- */
 .message-section {
-    display: none; /* Começa oculto */
+    display: none;
     height: 80vh; 
     justify-content: center;
     align-items: center;
     padding: 0 20px;
     opacity: 0;
     transition: opacity 2s ease;
+    flex-direction: column; /* Organiza texto e barra verticalmente */
+    position: relative;
 }
 
-/* Classe ativada pelo JS */
 .message-section.visible-flex {
     display: flex;
     opacity: 1;
 }
 
 .message-card {
-    /* REMOVIDO: Background, borda e sombra */
     background: transparent;
     border: none;
     box-shadow: none;
-    
     padding: 10px;
     text-align: center;
-    max-width: 900px; /* Mais largo para ficar elegante */
+    max-width: 900px;
     width: 100%;
-    
-    max-height: 75vh;
-    overflow-y: auto; /* Mantém rolagem se precisar */
+    max-height: 70vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-/* Barra de rolagem mais discreta ainda */
-.message-card::-webkit-scrollbar {
-    width: 3px;
-}
-.message-card::-webkit-scrollbar-thumb {
-    background: rgba(255, 0, 204, 0.5); 
-    border-radius: 10px;
-}
+.message-card::-webkit-scrollbar { width: 3px; }
+.message-card::-webkit-scrollbar-thumb { background: rgba(255, 0, 204, 0.5); border-radius: 10px; }
 
 #message-text {
-    font-size: 1.6rem; /* Fonte maior para impacto */
-    font-weight: 600; /* Mais peso */
+    font-size: 1.6rem;
+    font-weight: 600;
     font-style: italic;
     margin: 0 0 30px 0;
     color: #ffffff;
     line-height: 1.5;
     transition: opacity 0.5s ease;
-    
-    /* Sombra para garantir leitura no fundo estrelado */
     text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 30px rgba(255, 0, 204, 0.4);
 }
 
@@ -190,11 +181,44 @@ video {
     letter-spacing: 3px;
     transition: opacity 0.5s ease;
     margin-top: auto;
-    
     text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-/* --- Estrelas --- */
+/* --- NOVO: Barra de Progresso --- */
+.progress-container {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff00cc, #333399);
+    border-radius: 10px;
+    transition: width 0.1s linear; /* Animação controlada via JS */
+}
+
+/* --- NOVO: Efeito de Explosão (Sparkles) --- */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none; /* Não interfere no clique */
+    z-index: 50;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* --- Estrelas de Fundo --- */
 .star {
     position: absolute;
     background: white;
@@ -214,24 +238,10 @@ video {
 /* --- MOBILE SPECIFIC --- */
 @media (max-width: 768px) {
     #start-overlay h1 { font-size: 2.5rem; }
-    
     .marquee-container { height: 8vh; }
     .marquee span { font-size: 1.2rem; }
-    
-    .video-frame { 
-        height: 80vh;
-        padding: 5px;
-    }
-    
+    .video-frame { height: 80vh; padding: 5px; }
     .message-section { height: 85vh; }
-
-    /* Ajuste de fonte no celular para não ficar gigante */
-    #message-text {
-        font-size: 1.2rem; 
-        margin-bottom: 20px;
-    }
-    
-    #message-author {
-        font-size: 1rem;
-    }
+    #message-text { font-size: 1.2rem; margin-bottom: 20px; }
+    #message-author { font-size: 1rem; }
 }
