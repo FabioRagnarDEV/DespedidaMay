@@ -1,15 +1,17 @@
 /* --- Configurações das Mensagens --- */
 const messages = [
     { text: "May, com você eu aprendi a 'Polianar'. Então nunca se esqueça de ver o lado bom das dificuldades!", author: "- Hellen" },
-    { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’  kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horroress! Com carinho,", author: "- Edna" },
-    { text: "May, você vai fazer muiiiitaaa falta no esquadrão. Gratidão por tudo que fez e faz por nós. Tenho certeza que você vai brilhar nesta nova etapa. Estaremos sempre torcendo, e com muito orgulho de você !", author: "- Cassia" },
-    { text: "May, ter você em nossa equipe foi um presente. Sua amizade, cuidado e alegria vão fazer muita falta no nosso dia a dia. Que essa nova fase seja tão especial quanto você", author: "- Adiana" },
+    { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’ kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horrores! Com carinho,", author: "- Edna" },
+    { text: "May, você vai fazer muiiiitaaa falta no esquadrão. Gratidão por tudo que fez e faz por nós. Tenho certeza que você vai brilhar nesta nova etapa. Estaremos sempre torcendo, e com muito orgulho de você!", author: "- Cassia" },
+    { text: "May, ter você em nossa equipe foi um presente. Sua amizade, cuidado e alegria vão fazer muita falta no nosso dia a dia. Que essa nova fase seja tão especial quanto você.", author: "- Adiana" },
     { text: "May, sua generosidade nunca será esquecida! Que possa receber de volta todo cuidado, atenção e dedicação que você tem pelo próximo! Obrigado por tudo!", author: "- Rafael" },
     { text: "May vc me ajudou muito quando cheguei no setor, mas melhor que isso foram as suas palhaçadas que me fazia rir e adoro receber seus vídeos no Instagram. Vou sentir muito sua falta, deste jeito doidinha de ser.", author: "- Aurinha" },
-    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" },
-    { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" },
+    { text: "May, eu não tenho palavras para expressar o quanto estou orgulhosa e feliz por você! Sei que essa conquista foi uma vitória e você lutou muito pra chegar esse momento! Quantos 'não foi dessa vez' você ouviu, mas não desistiu e seguiu em frente. Eu sempre soube que você era capaz! Só tenho a agradecer por todos esses anos juntas. Voa alto e vai com tudo! Só tenho um pedido: nunca se esqueça de mim. Com muito amor e admiração.", author: "- Elis" },
+    { text: "Você é uma pessoa de luz, sempre disse isso pra você. Pessoas de luz são abençoadas sempre por Deus. Decola, você merece.", author: "- Adriano" },
+    { text: "May você é uma pessoa mais que especial e agradeço a Deus por fazer você minha amiga! Desejo todo o sucesso que a vida possa lhe reservar. Brilhe por onde passar, você merece o melhor!! Te adoro!!", author: "- Andreza" },
+    { text: "May, quero te agradecer de coração por tudo. Desde o primeiro momento, você me recebeu tão bem na equipe. Obrigada por cada ensinamento, troca, risadas e conversas. Você é uma mulher incrível, batalhadora, forte e uma amiga especial. Tenho muito orgulho de você! Que você nunca perca o seu jeitinho único de ser 🤍", author: "- Gle" },
+    { text: "May, que você seja luz por onde for 🤍 Obrigada pela parceria, valeu a pena te conhecer, muito sucesso nos seus passos. Quando um de nós vence, deixa o coração quentinho, com saudades, mas quentinho. Vai lá mulher e arrasa 🤍", author: "- Nadia" },
 ];
-
 let currentMessageIndex = 0;
 let messageInterval;
 
