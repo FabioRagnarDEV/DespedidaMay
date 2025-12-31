@@ -1,7 +1,7 @@
 /* --- Configurações das Mensagens --- */
 const messages = [
     { text: "May, com você eu aprendi a 'Polianar'. Então nunca se esqueça de ver o lado bom das dificuldades!", author: "- Hellen" },
-    { text: "Voa alto, May! O mundo do Marketing é pequeno para o seu talento.", author: "- Gestão" },
+    { text: "May, juntas cantamos aquela obra-prima de Rei Leão: ‘vergonha, desgraça…’  kkkkk Vou sentir muuuita sua falta, mas meu coração tá feliz demais por você e por essa nova fase linda que começa agora. Te desejo tudo de bom, muito sucesso e que você brilhe horroress! Com carinho,", author: "- Edna" },
     { text: "Obrigada por cada parceria e cada cafézinho. Muito sucesso!", author: "- Amigos do Comercial" },
     { text: "Você não é apenas uma estrela, é uma constelação inteira! Brilha!", author: "- Seus Colegas" },
     { text: "Que este novo ciclo seja repleto de conquistas incríveis.", author: "- RH" }
