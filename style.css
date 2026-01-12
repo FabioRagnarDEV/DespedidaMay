@@ -124,7 +124,7 @@ video {
     box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 
-/* --- Mensagens (Estilo Flutuante) --- */
+/* --- Mensagens --- */
 .message-section {
     display: none;
     height: 80vh; 
@@ -133,7 +133,7 @@ video {
     padding: 0 20px;
     opacity: 0;
     transition: opacity 2s ease;
-    flex-direction: column; /* Organiza texto e barra verticalmente */
+    flex-direction: column;
     position: relative;
 }
 
@@ -184,7 +184,7 @@ video {
     text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-/* --- NOVO: Barra de Progresso --- */
+/* --- Barra de Progresso --- */
 .progress-container {
     width: 200px;
     height: 4px;
@@ -202,7 +202,7 @@ video {
     transition: width 0.1s linear; /* Animação controlada via JS */
 }
 
-/* --- NOVO: Efeito de Explosão (Sparkles) --- */
+/* --- Efeito de Explosão --- */
 .sparkle {
     position: absolute;
     width: 6px;
